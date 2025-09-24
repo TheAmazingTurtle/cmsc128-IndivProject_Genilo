@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>To-do List Web App</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div id="modal-add-task-form" class="modal">
+    <div class="modal-content">
+      <span id="close-btn">&times;</span>
+      <h2>Add New Task</h2>
+      <form id="add-task-form">
+        <input type="text" id="title-input" name="title-input" required placeholder="Title">
+        <textarea id="description-input" name="description-input" placeholder="Description"></textarea>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="priority-input">Priority</label>
+            <select id="priority-input" name="priority-input">
+              <option value="low">Low</option>
+              <option value="mid" selected>Mid</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div class="form-group due-inputs">
+            <label for="due-date-input">Due on</label>
+            <input type="date" id="due-date-input" name="due-date-input">
+            <label for="due-time-input">at</label>
+            <input type="time" id="due-time-input" name="due-time-input">
+          </div>
+        </div>
+
+        <button type="submit" id="submit-btn" disabled>Added Task</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="modal-edit-task-form" class="modal">
+    <div class="modal-content">
+      <span id="close-edit-btn">&times;</span>
+      <h2>Edit Task</h2>
+      <form id="edit-task-form">
+        <input type="hidden" id="edit-task-id" name="edit-task-id">
+        <input type="text" id="edit-title-input" name="edit-title-input" required placeholder="Title">
+        <textarea id="edit-description-input" name="edit-description-input" placeholder="Description"></textarea>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="edit-priority-input">Priority</label>
+            <select id="edit-priority-input" name="edit-priority-input">
+              <option value="low">Low</option>
+              <option value="mid" selected>Mid</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div class="form-group due-inputs">
+            <label for="edit-due-date-input">Due on</label>
+            <input type="date" id="edit-due-date-input" name="edit-due-date-input">
+            <label for="edit-due-time-input">at</label>
+            <input type="time" id="edit-due-time-input" name="edit-due-time-input">
+          </div>
+        </div>
+
+        <button type="submit" id="edit-btn">Edit Task</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="modal-view-task-detail" class="modal">
+    <div class="modal-content">
+      <span id="close-details-btn" class="close">&times;</span>
+      <p id="detail-modal-header">Task Details</p>
+      <h2 id="modal-title"></h2>
+      <p id="modal-description"></p>
+      <div>
+        <p id="modal-priority"></p>
+        <p id="modal-due"></p>
+      </div>
+      <p id="modal-added"></p>
+      <div id="modal-actions">
+        <div id="edit-task-btn"><i class="fas fa-pen" title="Delete"> Edit</i></div>
+        <div id="delete-task-btn"><i class="fas fa-trash" title="Delete"> Delete</i></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="delete-confirm-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-delete-modal" class="close">&times;</span>
+      <p id="delete-modal-header">Confirm Delete</p>
+      <p id="delete-modal-text">Are you sure you want to delete this task?</p>
+      <div class="modal-actions">
+        <div id="confirm-delete-btn">Yes, Delete</div>
+        <div id="cancel-delete-btn">Cancel</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="todo-list-block">
+    <h1><i class="fas fa-list"> My To-Do List</i></h1>
+    <div class="sort-container">
+      <label for="sortSelect">Sort by:</label>
+      <select id="sortSelect">
+        <option value="date_added">Date Added</option>
+        <option value="due_date">Due Date</option>
+        <option value="priority">Priority</option> 
+      </select>
+    </div>
+    <div id="task-container">
+      
+      <div id="add-task-button" title="Add Task">
+        <i class="fas fa-plus-circle fa-3x"></i>
+      </div>
+
+      <div id="task-inner-container"></div>
+      <div id="space-buffer"></div>
+      <div id="modal-add-task"><center><i class="fas fa-plus-circle"> Add Task</i></center></div>
+
+      
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

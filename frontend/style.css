@@ -1,0 +1,522 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #d4a373 25%, #c68642 25%, #c68642 50%, #d4a373 50%, #d4a373 75%, #c68642 75%, #c68642 100%);
+  background-size: 56px 56px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 45px;
+}
+
+form > div > div {
+  display: flex;
+  flex-direction: row;
+}
+
+#todo-list-block {
+  border: 2px black solid;
+  padding: 16px;
+
+  position: relative;
+
+  margin: 70px auto;
+  width: 550px;
+  height: 650px;
+
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#todo-list-block > * {
+  margin: 10px;
+}
+
+
+  #task-container{
+    
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+    .tasks{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 10px 10px;
+      justify-content: space-around;
+      
+      border-bottom: black 1px solid;
+      border-top: black 1px solid;
+
+      min-height: 40px;
+    }
+
+      .completed-task {
+        text-decoration: line-through;
+        color: #888;
+      }
+
+      .task-content{
+        width: 80%;
+        cursor: pointer;
+      }
+
+        .task-content h2 {
+          font-size: 1.1rem;
+          margin: 0;
+          font-weight: bold;
+          color: #333;
+        }
+
+        .task-content p.description {
+          font-size: 0.9rem;
+          color: #555;
+          margin: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+
+        .task-content p.due-msg {
+          font-size: 0.8rem;
+          color: #888;
+          margin: 0;
+          font-style: italic;
+        }
+
+        .task-icon {
+          cursor: pointer;
+        }
+
+        .checkbox-icon:hover{
+          color: green;
+        }
+
+        .edit-icon:hover{
+          color: orange;
+        }
+
+        .delete-icon:hover{
+          color: red;
+        }
+    
+    #add-task-button {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+
+      cursor: pointer;
+    }
+
+    #add-task-button :hover{
+      color: red;
+    }
+  
+  #modal-add-task {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  #space-buffer {
+    width: 100%;
+    height: 15%;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#modal-add-task-form, #modal-view-task-detail, #modal-edit-task-form {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 600px;
+  max-width: 90%;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+
+#close-btn, #close-details-btn, #close-edit-btn, #close-delete-modal{
+  float: right;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#close-btn:hover, #close-details-btn:hover, #close-edit-btn:hover, #close-delete-modal:hover{
+  color: red;
+}
+
+
+form label {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+label[for="due-time-input"], label[for="edit-due-time-input"] {
+  margin-left: 8px;
+}
+
+form input, form textarea, form select {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+form textarea {
+  height: 200px;
+  resize: none;
+}
+
+input[type="date"], 
+input[type="time"] {
+  width: 120px;
+}
+
+#submit-btn, #edit-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#submit-btn:hover, #edit-btn:hover {
+  background: #0056b3;
+}
+
+#submit-btn:disabled, #edit-btn:disabled {
+  background: #ccc;
+  color: #666;
+  cursor: default;
+  opacity: 0.7;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+#close-details-btn {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+#close-details-btn:hover {
+  color: #000;
+}
+
+
+#modal-view-task-detail > div > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#detail-modal-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+}
+
+
+#modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+
+#modal-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 12px;
+
+
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: #f9f9f9; 
+
+
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#modal-due, #modal-priority {
+  font-size: 0.95rem;
+}
+
+#modal-added {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+#modal-actions {
+  margin-top: 5px;
+  width: 180px;
+
+  justify-content:  space-around;
+  float: right;
+}
+
+#modal-actions > div {
+  width: 80px;
+  height: 25px;
+
+  display: flex;
+
+  font-size: 0.7rem;
+  text-align: center;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  font-weight:300;
+  border-radius: 5px;
+}
+
+#edit-task-btn {
+  background: #3498db;  
+  color: #fff;
+}
+
+#edit-task-btn:hover {
+  background-color: #2980b9;
+}
+
+#delete-task-btn {
+  background: #e74c3c;  /* red */
+  color: #fff;
+}
+#delete-task-btn:hover {
+  background: #c0392b;  /* darker red */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  background: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 12px 16px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.toast.show {
+  visibility: visible;
+  animation: fadeIn 0.3s, fadeOut 0.3s 4.5s;
+}
+
+.toast button {
+  background: none;
+  border: none;
+  color: #4cafef;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; bottom: 0;}
+  to {opacity: 1; bottom: 20px;}
+}
+
+@keyframes fadeOut {
+  from {opacity: 1; bottom: 20px;}
+  to {opacity: 0; bottom: 0;}
+}
+
+
+
+
+
+
+
+
+
+#delete-confirm-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: auto;
+}
+
+#delete-confirm-modal .modal-content {
+  width: 360px;
+  max-width: 90%;
+  padding: 20px;
+}
+
+#delete-modal-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#delete-modal-text {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+#confirm-delete-btn, #cancel-delete-btn {
+  width: 80px;
+  height: 25px;
+
+  display: flex;
+
+  font-size: 0.7rem;
+  text-align: center;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  font-weight:300;
+  border-radius: 5px;
+}
+
+#confirm-delete-btn {
+  background: #e74c3c;  /* red */
+  color: #fff;
+}
+#confirm-delete-btn:hover {
+  background: #c0392b;  /* darker red */
+}
+
+#cancel-delete-btn {
+  border: black solid 1px;  /* red */
+}
+
+#cancel-delete-btn:hover {
+  background: #888;
+}
