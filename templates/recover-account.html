@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup • To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login-style.css') }}">
+    <script src="{{ url_for('static', filename='signup-script.js') }}" defer></script>
+</head>
+<body>
+    <main class="flex-centered-content">
+        <div class="signup-box flex-centered-content">
+            <h1>To-Do List</h1>
+            <form class="flex-col" id="signup-form">
+                <div class="user-input">
+                    <input type="text" id="username-input" placeholder=" ">
+                    <p id="username-msg" class="error-msg hidden"></p>
+                    <label for="username-input">Username</label>
+                </div>
+                <div class="user-input">
+                    <input type="password" id="password-input" placeholder=" ">
+                    <p id="password-msg" class="error-msg hidden"></p>
+                    <label for="password-input">Password</label>
+                    <div id="toggle-password" class="button hidden">Show</div>
+                </div>
+                <div class="user-input">
+                    <input type="text" id="fullname-input" placeholder=" ">
+                    <p id="fullname-msg" class="error-msg hidden"></p>
+                    <label for="fullname-input">Full Name</label>
+                </div>
+                <p id="auth-label">In case you forget your password:</p>
+                <div class="user-input">
+                    <input type="text" id="fave-place-input" placeholder=" ">
+                    <p id="fave-place-msg" class="error-msg hidden"></p>
+                    <label for="fave-place-input">Favorite Place</label>
+                </div>
+                <button type="submit" disabled>Submit</button>
+                <p id="signup-msg" class="hidden"></p>
+            </form>
+        </div>
+        <div class="minibox flex-centered-content"><a href="{{ url_for('login_page') }}">Go Back</a></div>
+    </main>
+</body>
+</html>

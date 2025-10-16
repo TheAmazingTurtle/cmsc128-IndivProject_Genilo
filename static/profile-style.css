@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 20px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    width: 770px;
+    height: 190px;
+    padding: 10px;
+
+    border-radius: 10px;
+
+    background: maroon;
+    color: white;
+
+    padding-top: 90px;
+}
+
+.action-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    height:80px;
+}
+
+h1 {
+    font-size: 50px;
+    color: white;
+}
+
+p {
+    color: whitesmoke;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+button {
+    cursor: pointer;
+
+    background: grey;
+    border-radius: 10px;
+    font-weight: bold;
+    width: 200px;
+    height: 40px;
+}
+
+button:hover {
+    background: darkgrey;
+}

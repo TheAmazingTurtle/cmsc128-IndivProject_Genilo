@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login • To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login-style.css') }}">
+    <script src="{{ url_for('static', filename='login-script.js') }}" defer></script>
+</head>
+<body>
+    <main class="flex-centered-content">
+        <div class="login-box flex-centered-content">
+            <h1>To-Do List</h1>
+            <form class="flex-col" id="login-form">
+                <div class="user-input">
+                    <input type="text" id="username-input" placeholder=" " required>
+                    <label for="username-input">Username</label>
+                </div>
+                <div class="user-input">
+                    <input type="password" id="password-input" placeholder=" " required>
+                    <label for="password-input">Password</label>
+                    <div id="toggle-password" class="button hidden">Show</div>
+                </div>
+                <button type="submit" disabled>Log in</button>
+                <p id="login-msg" class="hidden"></p>
+            </form>
+            <a id="password-recovery" href="">Forgot password?</a>
+        </div>
+        <div class="minibox flex-centered-content">Don't have an account? <a href="{{ url_for('signup_page') }}">Sign up</a></div>
+    </main>
+</body>
+</html>

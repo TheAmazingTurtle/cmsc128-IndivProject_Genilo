@@ -1,0 +1,203 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    padding: 35px;
+    gap: 12px;
+}
+
+h1 {
+    font-family: "Georgia", serif;
+    font-size: 30px;
+}
+
+form {
+    width: auto;
+    width: 270px;
+    margin-top: 36px;
+}
+
+.user-input {
+    display: flex;
+    
+    position: relative;
+    margin-bottom: 8px;
+
+    flex-direction: column;
+}
+
+input {
+    height: 38px;
+    width: 270px;
+    padding: 18px 10px 6px 10px;
+    font-size: 14px;
+    
+    border-radius: 5px;
+}
+
+label {
+    position: absolute;
+    font-size: 12px;
+    left: 10px;
+
+    pointer-events: none;
+
+    color: gray;
+    transition: all 0.2s ease;
+}
+
+label {
+    top: 12px;
+}
+
+#password-input {
+    padding-right: 60px;
+}
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+    top: 4px;
+    font-size: 10px;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: maroon;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    user-select: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.error-msg {
+    padding: 8px 0 8px 8px;
+    font-size: 12px;
+    color: red;
+}
+
+#password-recovery {
+    padding-top: 20px;
+}
+
+#signup-msg, #login-msg {
+    text-align: center;
+    font-size: 12px;
+    padding-top: 8px;
+}
+
+#toggle-password {
+    position: absolute;
+    right: 5px;
+    font-size: 12px;
+    top: 4px;
+
+    padding: 7px;
+    border-radius: 5px;
+}
+
+#auth-label {
+    
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.login-submit, .signup-submit {
+    height: 32px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 8px;
+
+    color: white;
+    background-color: darkred;
+}
+
+.login-submit:hover {
+    background-color: maroon;
+}
+
+.login-box, .signup-box {
+    width: 350px;
+    padding: 45px 20px 25px 20px;
+
+    border: 1px solid grey;
+}
+
+.minibox {
+    font-size: 14px;
+
+    flex-direction: row !important;
+
+    width: 350px;
+    height: 62px;
+
+    gap: 5px;
+
+    border: 1px grey solid;
+    
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-centered-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+    height: 32px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 8px;
+
+    color: white;
+    background-color: darkred;
+    opacity: 100%;
+}
+
+button:hover {
+    background-color: maroon;
+}
+
+button:disabled {
+    cursor: default;
+    opacity: 60%;
+}
+
+
+.button {
+    display: flex;
+    
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.red-outline {
+    border: 1px red solid;
+}
+
+.hidden {
+    display: none !important;
+}

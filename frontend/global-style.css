@@ -1,0 +1,156 @@
+* {
+    border: 1px maroon solid;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: maroon;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 100vh;
+}
+
+    #my-task-box {
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        margin: 20px;
+
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+        #to-do-tasks-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+            #add-task-container {
+                display: flex;
+                flex-direction: column;
+                
+            }
+
+                #add-task-button {
+                    cursor: pointer;
+                    color: maroon;
+                    
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+
+                    margin: 5px;
+                    padding: 5px;
+
+                    user-select: none;
+                }
+
+                #add-task-form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    padding: 5px;
+                }
+
+                    #task-title-input {
+                        font-size: 20px;
+                        font-weight: bold;
+
+                        padding: 10px;
+
+                        border-radius: 10px;
+                    }
+
+                    #task-details-input {
+                        padding: 5px;
+                    }
+
+                    #new-task-action-container {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        flex-direction: row;
+                        margin-left: auto;
+
+                        width: 180px;
+                    }
+
+                        #new-task-action-container > div {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            width: 80px;
+                            height: 20px;
+
+                            border-radius: 5px;
+
+                            color: maroon;
+                            cursor: pointer;
+
+                            user-select: none;
+                        }
+
+                        #task-attribute-container {
+                            display: flex;
+                            flex-direction: row;
+
+                            justify-content: space-between;
+                        }
+
+                    #add-task-button:hover, #new-task-action-container > div:hover{
+                        background: maroon;
+                        color: white;
+                    }
+
+                    #add-task-button:active, #new-task-action-container > div:active{
+                        transform: scale(0.95);
+                    }
+
+
+
+            #scrollable-task-box {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                padding: 5px;
+
+                max-height: 400px;
+                overflow-y: auto;
+            }
+
+                .task {
+                    display: block;  
+                    width: 100%;
+                    flex: 0 0 auto;
+                    padding: 10px;
+                    background: #f3f3f3;
+                    border-radius: 4px;
+                }
+
+                #no-task-screen {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    height: 400px;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+footer {
+    text-align: center;
+}
+
+.invisible {
+    display: none !important;
+}
