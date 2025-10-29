@@ -20,7 +20,7 @@ def add_user():
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
 
     salt = bcrypt.gensalt()
-    hashed_fave_place = bcrypt.hashpw(password.encode('utf-8'), salt)
+    hashed_fave_place = bcrypt.hashpw(fave_place.encode('utf-8'), salt)
 
 
     conn = db.get_connection()
@@ -118,6 +118,8 @@ def logout():
 @app.route('/')
 def login_page():
     return render_template('login.html')
+
+# routing
 
 @app.route('/signup')
 def signup_page():
