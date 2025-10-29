@@ -1,6 +1,7 @@
 # File Name: cmsc128-IndivProject_Genilo
 # Name: Kent Francis Genilo
 # Backend: Python (Flask) + SQLite
+# Included Libraries: bcrypt
 
 # The built-in SQLite3 library to communicate with SQLite DB
 # @app.route were used as endpoints
