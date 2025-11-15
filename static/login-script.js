@@ -53,17 +53,17 @@ async function login(event) {
     });
 
     const data = await res.json();
-    const msg = document.getElementById('login-msg');
+    
 
-    if (res.ok) {
-        msg.style.color = "green";
-        msg.textContent = data.message;
-        
-        setTimeout(() => {
-            window.location.href = data.redirect;
-        }, 1000);
-    } else {
+    if (!res.ok) {
+        let msg = document.getElementById('login-msg');
+        msg.classList.remove('hidden');
         msg.style.color = "red";
         msg.textContent = data.error;
-    }
+        
+        return
+    } 
+
+    document.getElementById("login-form").reset();
+    window.location.href = data.redirect;
 }

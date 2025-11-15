@@ -9,9 +9,19 @@
     <script defer src="{{ url_for('static', filename='profile-script.js') }}"></script>
 </head>
 <body>
-    <div class="profile-container">
+    <header>
+        <nav>
+            <div><a href="{{ url_for('to_do_page') }}">Home</a></div>
+            <div><a href="{{ url_for('collab_page') }}">Collaboration</a></div>
+            <div><a href="{{ url_for('profile_page') }}">Profile</a></div>
+            <div class="inv-button">Logout</div>
+        </nav>
+    </header>
+    <main>
+        <div class="profile-container">
         <div class="info-card">
             <h1></h1>
+            <p id="user-id"></p>
             <p id="created-at"></p>
         </div>
         <div class="action-card">
@@ -19,5 +29,7 @@
             <button id="logout">Logout</button>
         </div>
     </div>
+    </main>
+    
 </body>
 </html>

@@ -9,14 +9,14 @@ async function initPage(){
             return;
         }
 
-        displayUserInfo(userInfo.fullname, userInfo.username, userInfo.created_at);
+        displayUserInfo(userInfo.fullname, userInfo.username, userInfo.created_at, userInfo.id);
     } catch (err) {
         console.error("Failed to initialize profile:", err);
     }
 }
 
 async function getUserInfo(){
-    const response = await fetch('/get-user-info');
+    const response = await fetch('/user-info');
     const data = await response.json();
 
     if (!response.ok) {
@@ -27,10 +27,11 @@ async function getUserInfo(){
     return data;
 }
 
-function displayUserInfo(fullname, username, created_at){
+function displayUserInfo(fullname, username, created_at, id){
     document.querySelector("h1").textContent = `Welcome, ${fullname}!`
 
     const formattedDate = new Date(created_at).toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric"});
+    document.getElementById("user-id").textContent = `ID #: ${id}`
     document.getElementById("created-at").textContent = `Been a user since ${formattedDate}`
 }
 
@@ -41,12 +42,11 @@ async function logout(event) {
         const res = await fetch("/logout");
         const data = await res.json();
 
-
         if (res.ok) {
             console.log(data.message)
 
             setTimeout(() => {
-                window.location.href = "/"; 
+                window.location.href = "/login"; 
             }, 1000);
         } else {
             console.log("Logout failed.")

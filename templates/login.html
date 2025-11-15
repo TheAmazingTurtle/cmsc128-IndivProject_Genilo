@@ -24,7 +24,7 @@
                 <button type="submit" disabled>Log in</button>
                 <p id="login-msg" class="hidden"></p>
             </form>
-            <a id="password-recovery" href="">Forgot password?</a>
+            <a id="password-recovery" href="{{ url_for('account_recovery') }}">Forgot password?</a>
         </div>
         <div class="minibox flex-centered-content">Don't have an account? <a href="{{ url_for('signup_page') }}">Sign up</a></div>
     </main>

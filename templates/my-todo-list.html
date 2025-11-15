@@ -1,0 +1,81 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='global-style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div><a href="{{ url_for('to_do_page') }}">Home</a></div>
+            <div><a href="{{ url_for('collab_page') }}">Collaboration</a></div>
+            <div><a href="{{ url_for('profile_page') }}">Profile</a></div>
+            <div class="inv-button">Logout</div>
+        </nav>
+    </header>
+    <main>
+        <div id="my-task-box">
+            <div id="to-do-tasks-container">
+                <h2 id="to-do-list-title">My To-Do List</h2>
+                <div id="add-task-container">
+                    <div id="add-task-button" class="button list-actions modal-actions"><i class="fa-solid fa-plus"></i> Add a task</div>
+                    <div id="manage-collab-button" class="button list-actions modal-actions"><i class="fa-solid fa-users-gear"></i> Collaborators</div>
+                </div>
+                <div id="scrollable-task-box">
+                    <div id="no-task-screen" class="hidden">
+                        <p>Your to-do list is empty</p>
+                        <p>Nice work!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form id="add-task-form" class="hidden modal-container">
+            <input type="text" id="task-title-input" placeholder="Title" required>
+            <div id="task-attribute-container">
+                <div id="task-priority">
+                    <label>Priority:</label>
+                    <select id="task-priority-input">
+                        <option value="high">High</option>
+                        <option value="mid" selected>Mid</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+
+                <div id="task-due-datetime">
+                    <label>Due on</label>
+                    <input type="date" id="task-date-input">
+                    <label>at</label>
+                    <input type="time" id="task-time-input">
+                </div>
+            </div>
+            <div id="new-task-action-container">
+                <div id="cancel-new-task-button" class="button modal-actions">Cancel</div>
+                <div id="submit-new-task-button" class="button modal-actions">Submit</div>
+            </div>
+        </form>
+
+        <div id="collab-modal" class="hidden modal-container">
+            <h2>Manage Access</h2>
+            <form id="add-collab-form">
+                <div class="user-input">
+                    <input type="text" class="formatted-input" id="collab-username-input" placeholder=" " required>
+                    <label for="username-input" class="formatted-label">Collab Username</label>
+                </div>
+                <button type="submit">Add Collab</button>
+            </form>
+            <p id="collab-error-msg"></p>
+            <h3>Collaborators:</h3>
+            <div id="scrollable-collab-container"></div>
+        </div>
+
+    </main>
+    <footer>
+        <p>Made by Kent Francis Genilo</p>
+        <p>CMSC 128 Individual Project</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='style-script.js') }}"></script>
+</body>
+</html>
