@@ -3,7 +3,15 @@ let passwordCheck = false
 let fullnameCheck = false
 let authCheck = false
 
-document.getElementById("signup-form").addEventListener("submit", addUser)
+document.getElementById("signup-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const loginData = await addUser();
+
+    if (loginData) await login(loginData.username, loginData.password);
+})
+
+
 document.getElementById("password-input").addEventListener("change", verifyPassword)
 document.getElementById("username-input").addEventListener("change", verifyUsername)
 document.getElementById("fullname-input").addEventListener("change", verifyFullname)
@@ -170,9 +178,7 @@ function resetForm(){
     document.getElementById('signup-form').reset();
 }
 
-async function addUser(event) {
-    event.preventDefault();
-
+async function addUser() {
     const username = document.getElementById('username-input').value;
     const password = document.getElementById('password-input').value;
     const fullname = document.getElementById('fullname-input').value;
@@ -192,9 +198,11 @@ async function addUser(event) {
         outmsg.textContent = data.message;
         outmsg.style.color = "green";
         resetForm();
+        return {username, password}
     } else {
         outmsg.textContent = data.error || "Something went wrong.";
         outmsg.style.color = "red";
+        return null
     }    
 }
 
@@ -208,4 +216,19 @@ async function getAllUsernames() {
     } 
 
     return data.usernameList;
+}
+
+async function login(username, password) {
+    const res = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    });
+
+    const data = await res.json();
+    
+
+    if (!res.ok) return
+
+    window.location.href = data.redirect;
 }
