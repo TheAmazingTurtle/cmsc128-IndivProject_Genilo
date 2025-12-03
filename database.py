@@ -1,7 +1,7 @@
 import sqlite3
 
 def get_connection():
-    return sqlite3.connect("todo_webapp.db")
+    return sqlite3.connect("database.db")
 
 def init():
     conn = get_connection()
