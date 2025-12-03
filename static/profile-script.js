@@ -1,5 +1,3 @@
-document.getElementById("logout").addEventListener("click", logout);
-
 async function initPage(){
     try {
         const userInfo = await getUserInfo();
@@ -33,27 +31,6 @@ function displayUserInfo(fullname, username, created_at, id){
     const formattedDate = new Date(created_at).toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric"});
     document.getElementById("user-id").textContent = `ID #: ${id}`
     document.getElementById("created-at").textContent = `Been a user since ${formattedDate}`
-}
-
-async function logout(event) {
-    event.preventDefault();
-
-    try {
-        const res = await fetch("/logout");
-        const data = await res.json();
-
-        if (res.ok) {
-            console.log(data.message)
-
-            setTimeout(() => {
-                window.location.href = "/login"; 
-            }, 1000);
-        } else {
-            console.log("Logout failed.")
-        }
-    } catch (err) {
-        console.error("Logout error:", err);
-    }
 }
 
 initPage()

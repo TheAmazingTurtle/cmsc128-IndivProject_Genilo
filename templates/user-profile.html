@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='profile-style.css') }}">
     <script defer src="{{ url_for('static', filename='profile-script.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='logout-script.js') }}"></script>
 </head>
 <body>
     <header>
@@ -14,7 +15,7 @@
             <div><a href="{{ url_for('to_do_page') }}">Home</a></div>
             <div><a href="{{ url_for('collab_page') }}">Collaboration</a></div>
             <div><a href="{{ url_for('profile_page') }}">Profile</a></div>
-            <div class="inv-button">Logout</div>
+            <div class="inv-button" id="logout">Logout</div>
         </nav>
     </header>
     <main>
@@ -26,7 +27,6 @@
         </div>
         <div class="action-card">
             <button>Edit Account</button>
-            <button id="logout">Logout</button>
         </div>
     </div>
     </main>

@@ -316,7 +316,7 @@ def login():
 @app.route("/user-profile")
 def profile_page():
     if "user_id" not in session:
-        return render_template('index.html')
+        return render_template('login.html')
     
     session["active"] = True
     return render_template("user-profile.html")
@@ -353,7 +353,7 @@ def logout():
 @app.route('/login')
 def login_page():
     session.clear()
-    return render_template('index.html')
+    return render_template('login.html')
 
 @app.route('/signup')
 def signup_page():

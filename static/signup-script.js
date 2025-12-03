@@ -5,12 +5,14 @@ let authCheck = false
 
 document.getElementById("signup-form").addEventListener("submit", async (e) => {
     e.preventDefault();
-
     const loginData = await addUser();
-
     if (loginData) await login(loginData.username, loginData.password);
 })
 
+window.addEventListener('pageshow', () => {
+    document.getElementById('signup-form').reset();
+    document.querySelectorAll('.error-msg').forEach((msgContainer) => msgContainer.classList.add('hidden'));
+});
 
 document.getElementById("password-input").addEventListener("change", verifyPassword)
 document.getElementById("username-input").addEventListener("change", verifyUsername)
@@ -230,5 +232,5 @@ async function login(username, password) {
 
     if (!res.ok) return
 
-    window.location.href = data.redirect;
+    window.location.replace("/to-do-list");
 }

@@ -1,3 +1,7 @@
+window.addEventListener('pageshow', () => {
+    document.getElementById('login-form').reset();
+    document.getElementById('login-msg').classList.add('hidden');
+});
 
 document.getElementById("login-form").addEventListener("submit", login)
 document.getElementById("toggle-password").addEventListener("click", togglePasssword)
@@ -65,5 +69,5 @@ async function login(event) {
     } 
 
     document.getElementById("login-form").reset();
-    window.location.href = data.redirect;
+    window.location.replace("/to-do-list");
 }
