@@ -1,5 +1,4 @@
 import sqlite3
-import bcrypt
 
 def get_connection():
     return sqlite3.connect("todo_webapp.db")
