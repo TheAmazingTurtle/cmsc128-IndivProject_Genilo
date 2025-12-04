@@ -21,7 +21,7 @@ def init():
     conn.execute    ("""
                         CREATE TABLE IF NOT EXISTS task (
                             task_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            username TEXT UNIQUE NOT NULL,
+                            username TEXT NOT NULL,
                             title TEXT NOT NULL,
                             done_status BOOLEAN NOT NULL DEFAULT 0,
                             due_date DATE,

@@ -56,6 +56,8 @@ def add_task():
     c = conn.cursor()
     
     try:
+        print((session["username"], title, due_date, due_time, priority))
+
         c.execute(
             """
             INSERT INTO task 
