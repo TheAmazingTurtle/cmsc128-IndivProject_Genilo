@@ -4,6 +4,7 @@ const taskContainer = document.getElementById("scrollable-task-box");
 const submitTaskButton = document.getElementById("submit-new-task-button");
 const collabContainer = document.getElementById("scrollable-collab-container");
 
+let toastTimer = null;
 
 addTaskButtonToggle.addEventListener("click", toggleForm)
 cancelFormButton.addEventListener("click", toggleForm)
@@ -11,7 +12,7 @@ cancelFormButton.addEventListener("click", toggleForm)
 submitTaskButton.addEventListener("click", async () => {
     await addTaskToDatabase();
     document.getElementById("add-task-form").reset();
-    await refreshTaskContainer()();
+    await refreshTaskContainer();
 })
 
 document.getElementById("manage-collab-button").addEventListener("click", () => {
@@ -102,7 +103,7 @@ function addTaskToPage(isComplete, id, title, createdOn, dueDate, dueTime, prior
     });
     
     task.querySelector(".delete-icon").addEventListener("click", () => {
-        deleteTask(id);
+        showToast(`Task "${title}" deleted`, id, task)
     });
 
     taskContainer.appendChild(task);
@@ -221,6 +222,30 @@ async function removeCollab(username) {
     }
 
     await refreshCollabContainer()
+}
+
+function showToast(message, id, task) {
+  const toast = document.getElementById("toast");
+
+  toast.innerHTML = `
+    <span>${message}</span>
+    <button id="undoBtn">Undo</button>
+  `;
+
+  task.classList.add('hidden');
+  toast.className = "toast show";
+
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.className = "toast";
+    deleteTask(id);
+  }, 5000);
+
+  document.getElementById("undoBtn").onclick = () => {
+    task.classList.remove('hidden');
+    toast.className = "toast";
+    clearTimeout(toastTimer);
+  };
 }
 
 refreshPage()
